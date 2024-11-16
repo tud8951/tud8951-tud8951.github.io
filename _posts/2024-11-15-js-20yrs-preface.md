@@ -5,7 +5,7 @@ author:       "BigJackson"
 header-style: text
 catalog:      true
 tags:
-    - News
+    - news
     - Science
 ---
 
