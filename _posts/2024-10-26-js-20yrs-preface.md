@@ -15,7 +15,7 @@ tags:
 
 单曲体验[网站](https://bigjackson.us.kg/apt)
 
-![APT.]()
+![APT.](https://bigjackson.us.kg/img/apt.png)
 
 Black Label 宣布，Rosé 和 Bruno Mars 的合作曲《APT.》的 MV 在 YouTube 上的点击量已突破了 1 亿次，这首歌曲于18日正式发布，仅仅5天就创下了这一佳绩。
 
