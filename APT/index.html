@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://bigjackson.us.kg/img/favicon.ico" type="image/x-icon">
+    <title>APT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .player-container {
+            background: linear-gradient(to bottom, #444, #000);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            width: 350px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .album-cover {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            margin: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .song-title {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .artist-name {
+            color: lightgray;
+            font-size: 1em;
+            font-style: italic;
+        }
+        .progress-bar-container {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            background-color: gray;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: white;
+            transition: width 0.1s ease-in-out;
+        }
+        .time-display {
+            color: white;
+            font-size: 0.9em;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        .controls button {
+            background: none;
+            border: none;
+            color: gray;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .controls button:hover {
+            color: white;
+        }
+        .lyrics {
+            color: white;
+            font-size: 1em;
+            line-height: 1.5;
+            max-height: 100px;
+            overflow-y: scroll;
+        }
+        .lyrics p {
+            margin: 5px 0;
+        }
+        .lyrics p.current {
+            color: yellow;
+        }
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <div class="album-cover">
+            <img src="https://bigjackson.us.kg/img/apt.jfif" alt="Album Cover">
+        </div>
+        <div class="song-title">APT.</div>
+        <div class="artist-name">ROSÉ朴彩영 & Bruno Mars</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+        </div>
+        <div class="time-display">0:00 / 0:00</div>
+        <div class="controls">
+            <button id="play-pause"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="lyrics">
+            <p>채영이가 좋아하는</p>
+            <p>랜덤 게임</p>
+            <p>랜덤 게임</p>
+            <p>Game start</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>Kissy face, kissy face</p>
+            <p>Sent to your phone but,</p>
+            <p>I'm trying to kiss your lips for real</p>
+            <p>Red hearts, red hearts</p>
+            <p>That’s what I’m on yeah</p>
+            <p>Come give me something I can feel</p>
+            <p>Oh oh oh</p>
+            <p>Don't you want me like I want you, baby</p>
+            <p>Don't you need me like I need you now</p>
+            <p>Sleep tomorrow but tonight go crazy</p>
+            <p>All you gotta do is just meet me at the</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>It’s whatever it’s whatever it’s whatever you like</p>
+            <p>Turn this 아파트 into a club</p>
+            <p>I’m talking drink, dance, smoke, freak, party all night</p>
+            <p>건배 건배 girl what’s up</p>
+            <p>Oh oh oh</p>
+            <p>Don't you want me like I want you, baby</p>
+            <p>Don't you need me like I need you now</p>
+            <p>Sleep tomorrow but tonight go crazy</p>
+            <p>All you gotta do is just meet me at the</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+            <p>Hey so now you know the game</p>
+            <p>Are you ready?</p>
+            <p>Cause I’m comin to get ya</p>
+            <p>Get ya, get ya</p>
+            <p>Hold on, hold on</p>
+            <p>I’m on my way</p>
+            <p>Yeah yeah yeah yeah yeah</p>
+            <p>I’m on my way</p>
+            <p>Hold on, hold on</p>
+            <p>I’m on my way</p>
+            <p>Yeah yeah yeah yeah yeah</p>
+            <p>I’m on my way</p>
+            <p>Don't you want me like I want you, baby</p>
+            <p>Don't you need me like I need you now</p>
+            <p>Sleep tomorrow but tonight go crazy All</p>
+            <p>you gotta do is just meet me at the</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Just meet me at the</p>
+            <p>(Uh huh uh huh)</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Just meet me at the</p>
+            <p>(Uh huh uh huh)</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Just meet me at the</p>
+            <p>(Uh huh uh huh)</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>아파트 아파트</p>
+            <p>Uh, uh huh uh huh</p>
+        </div>
+    </div>
+
+    <audio id="audio-player" src="https://bigjackson.us.kg/music/apt.mp3"></audio>
+
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playPauseButton = document.getElementById('play-pause');
+        const progressBarContainer = document.querySelector('.progress-bar-container');
+        const progressBarFill = document.querySelector('.progress-bar-fill');
+        const timeDisplay = document.querySelector('.time-display');
+
+        let isPlaying = false;
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                audioPlayer.play();
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function updateProgressBar() {
+            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBarFill.style.width = `${progressPercent}%`;
+            updateTimeDisplay();
+        }
+
+        function updateTimeDisplay() {
+            const currentTime = formatTime(audioPlayer.currentTime);
+            const duration = formatTime(audioPlayer.duration);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        }
+
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+            return `${minutes}:${seconds}`;
+        }
+
+        audioPlayer.addEventListener('timeupdate', updateProgressBar);
+
+        playPauseButton.addEventListener('click', togglePlayPause);
+
+        progressBarContainer.addEventListener('click', (event) => {
+            const rect = progressBarContainer.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percent = (clickX / rect.width) * 100;
+            audioPlayer.currentTime = (percent / 100) * audioPlayer.duration;
+        });
+
+        // Initialize play/pause button icon
+        playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+
+        // Example lyrics highlighting
+        const lyricsParagraphs = document.querySelectorAll('.lyrics p');
+        let currentLyricIndex = 0;
+
+        function highlightCurrentLyric() {
+            for (let i = 0; i < lyricsParagraphs.length; i++) {
+                lyricsParagraphs[i].classList.remove('current');
+            }
+            if (currentLyricIndex < lyricsParagraphs.length) {
+                lyricsParagraphs[currentLyricIndex].classList.add('current');
+            }
+            currentLyricIndex++;
+        }
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            const currentTime = audioPlayer.currentTime;
+            const duration = audioPlayer.duration;
+            if (currentTime >= duration) {
+                currentLyricIndex = 0;
+            }
+            highlightCurrentLyric();
+        });
+    </script>
+
+    <footer id="v18"> 
+        <p id="v19">COPYRIGHT © 2020 - 2024 BIGJACKSON.ALL RIGHTS RESERVED.BigJackson 版权所有</p> 
+    </footer>
+</body>
+</html>
+
+
+
